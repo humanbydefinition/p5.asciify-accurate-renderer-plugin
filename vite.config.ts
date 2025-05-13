@@ -15,7 +15,7 @@ export default defineConfig({
             output: {
                 globals: {
                     p5: 'p5',
-                    'p5.asciify': 'p5.asciify',
+                    'p5.asciify': 'p5asciify',
                 },
                 
             },
