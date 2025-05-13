@@ -1,12 +1,14 @@
 import p5 from 'p5';
-import type { P5AsciifyRendererPlugin } from 'p5.asciify/plugins';
-import { P5AsciifyGrid, P5AsciifyFontManager, renderers } from 'p5.asciify';
-
+import { P5AsciifyGrid, P5AsciifyFontManager, renderers, plugins } from 'p5.asciify';
 import { P5AsciifyAccurateRenderer, ACCURATE_DEFAULT_OPTIONS } from './renderer/AccurateAsciiRenderer';
+
+
 /**
- * The Accurate Renderer Plugin for p5.asciify
+ * `p5.asciify` plugin that provides an accurate ASCII renderer.
+ * This renderer attempts to pick the most fitting ASCII representation
+ * to accurately represent the input sketch using the available ASCII characters.
  */
-export const AccurateRendererPlugin: P5AsciifyRendererPlugin = {
+export const AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin = {
     id: 'accurate',
     name: 'Accurate ASCII Renderer',
     description: 'An ASCII renderer that attempts picking the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.',
@@ -29,5 +31,4 @@ export const AccurateRendererPlugin: P5AsciifyRendererPlugin = {
     }
 };
 
-// Export the plugin as default for easier importing
 export default AccurateRendererPlugin;
