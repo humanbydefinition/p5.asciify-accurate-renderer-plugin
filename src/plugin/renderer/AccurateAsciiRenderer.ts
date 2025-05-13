@@ -67,8 +67,6 @@ export class P5AsciifyAccurateRenderer extends renderers.renderer2d.feature.Abst
         const mergedOptions = { ...ACCURATE_DEFAULT_OPTIONS, ...options };
         super(p5Instance, captureFramebuffer, grid, fontManager, mergedOptions);
 
-        console.log();
-
         this._characterSelectionShader = this._p.createShader(vertexShader, generateCharacterSelectionShader(this._fontManager.fontSize));
         this._brightnessSampleShader = this._p.createShader(vertexShader, generateBrightnessSampleShader(this._grid.cellHeight, this._grid.cellWidth));
         this._colorSampleShader = this._p.createShader(vertexShader, generateColorSampleShader(16, this._grid.cellHeight, this._grid.cellWidth));
@@ -88,6 +86,8 @@ export class P5AsciifyAccurateRenderer extends renderers.renderer2d.feature.Abst
             depthFormat: this._p.UNSIGNED_INT,
             textureFiltering: this._p.NEAREST
         });
+
+        console.log()
     }
 
     resizeFramebuffers(): void {
