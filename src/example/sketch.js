@@ -53,6 +53,20 @@ const sketch = new p5((p) => {
         p.image(img, -p.windowWidth / 2, -p.windowHeight / 2);
     };
 
+    p.drawAsciify = () => {
+        const fpsText = "FPS:" + Math.min(Math.ceil(p.frameRate()), 60);
+
+        p.noStroke();
+        p.fill(0);
+        p.rect(-p.width / 2, p.height / 2 - p.textAscent() - 4, p.textWidth(fpsText), p.textAscent());
+
+        p.textFont(asciifier.fontManager.font);
+        p.textSize(64);
+        p.fill(255, 255, 0);
+        p.text(fpsText, -p.width / 2, p.height / 2);
+    };
+
+
     p.windowResized = () => {
         p.resizeCanvas(p.windowWidth, p.windowHeight);
     };
