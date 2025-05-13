@@ -1,0 +1,18 @@
+{
+  "name": "p5.asciify-accurate-renderer-plugin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "p5.asciify": "^0.9.1-beta.4"
+  }
+}
