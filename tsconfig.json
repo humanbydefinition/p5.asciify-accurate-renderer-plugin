@@ -1,25 +1,33 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
+    "target": "ESNext", 
+    "importHelpers": true,
+    
+    "module": "ESNext",  
+    "moduleResolution": "Node",
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    "allowJs": true,
 
-    /* Linting */
+    "lib": ["DOM", "ESNext"],
+
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "declarationDir": "dist/types",
+    
+    "outDir": "dist",            
+    "rootDir": "src/plugin",
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "types": [
+      "vite-plugin-glsl/ext"
+    ]
   },
-  "include": ["src"]
+  "include": ["src/plugin", "src/declarations.d.ts"]
 }
