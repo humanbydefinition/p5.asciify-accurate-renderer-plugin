@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { p5asciify } from 'p5.asciify';
 
-import { AccurateRendererPlugin } from './plugin/AccurateRendererPlugin';
+import { AccurateRendererPlugin } from '../plugin/AccurateRendererPlugin';
 
 const sketch = new p5((p) => {
 
