@@ -1,18 +1,51 @@
 {
   "name": "p5.asciify-accurate-renderer-plugin",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A plugin renderer for p5.asciify that attempts picking the most fitting ASCII representation to accurately represent the input texture using the available ASCII characters.",
   "type": "module",
+  "types": "./dist/types/AccurateRendererPlugin.d.ts",
+  "main": "./dist/p5.asciify-accurate-renderer-plugin.umd.js",
+  "module": "./dist/p5.asciify-accurate-renderer-plugin.esm.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build && tsc",
     "preview": "vite preview"
   },
   "devDependencies": {
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-plugin-glsl": "^1.3.1",
+    "@types/p5": "^1.7.6"
   },
   "dependencies": {
     "p5.asciify": "^0.9.1-beta.4"
-  }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/AccurateRendererPlugin.d.ts",
+      "import": "./dist/p5.asciify-accurate-renderer-plugin.esm.js",
+      "require": "./dist/p5.asciify-accurate-renderer-plugin.umd.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humanbydefinition/p5.asciify-accurate-renderer-plugin.git"
+  },
+  "keywords": [
+    "p5",
+    "p5js",
+    "p5-library",
+    "p5.asciify",
+    "ascii",
+    "textmode"
+  ],
+  "author": "humanbydefinition",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/humanbydefinition/p5.asciify-accurate-renderer-plugin/issues"
+  },
+  "homepage": "https://p5.textmode.art",
+  "files": [
+    "dist"
+  ]
 }
