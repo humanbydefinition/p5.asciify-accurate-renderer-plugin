@@ -38,3 +38,14 @@ export const AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin = {
         );
     }
 };
+
+// Extend the Window interface to include the custom property
+declare global {
+  interface Window {
+    AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin;
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.AccurateRendererPlugin = AccurateRendererPlugin;
+}

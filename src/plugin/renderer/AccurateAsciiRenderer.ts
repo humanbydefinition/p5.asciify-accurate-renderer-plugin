@@ -1,9 +1,7 @@
 import p5 from 'p5';
 
-import { renderers } from 'p5.asciify';
+import { P5AsciifyAbstractFeatureRenderer2D, renderers } from 'p5.asciify';
 import { P5AsciifyGrid } from 'p5.asciify';
-
-import type { FeatureAsciiRendererOptions } from 'p5.asciify/renderers';
 
 import { generateCharacterSelectionShader, generateBrightnessSampleShader, generateColorSampleShader } from './shaders/shaderGenerators.min';
 import brightnessSplitShader from './shaders/brightnessSplit.frag?raw';
@@ -38,10 +36,26 @@ export const ACCURATE_DEFAULT_OPTIONS = {
     flipVertically: false,
 }
 
+const getBaseClass = (): typeof P5AsciifyAbstractFeatureRenderer2D => {
+    // For ESM mode - direct import works
+    if (typeof P5AsciifyAbstractFeatureRenderer2D !== 'undefined') {
+        return P5AsciifyAbstractFeatureRenderer2D;
+    }
+    
+    // For UMD mode - use the global export
+    if (typeof window !== 'undefined' && window.P5AsciifyAbstractFeatureRenderer2D) {
+        return window.P5AsciifyAbstractFeatureRenderer2D;
+    }
+    
+    console.error('P5AsciifyAbstractFeatureRenderer2D not found. Ensure p5.asciify is properly loaded.');
+
+    throw new Error('`P5AsciifyAbstractFeatureRenderer2D` not found. Please ensure p5.asciify is loaded before this plugin.');
+};
+
 /**
  * An ASCII renderer that attempts picking the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.
  */
-export class P5AsciifyAccurateRenderer extends renderers.renderer2d.feature.AbstractFeatureRenderer2D {
+export class P5AsciifyAccurateRenderer extends getBaseClass() {
     private _characterSelectionShader: p5.Shader;
     private _brightnessSampleShader: p5.Shader;
     private _colorSampleShader: p5.Shader;
@@ -62,7 +76,7 @@ export class P5AsciifyAccurateRenderer extends renderers.renderer2d.feature.Abst
         captureFramebuffer: p5.Framebuffer,
         grid: P5AsciifyGrid,
         fontManager: P5AsciifyFontManager,
-        options: FeatureAsciiRendererOptions = ACCURATE_DEFAULT_OPTIONS
+        options: renderers.FeatureAsciiRendererOptions = ACCURATE_DEFAULT_OPTIONS
     ) {
         const mergedOptions = { ...ACCURATE_DEFAULT_OPTIONS, ...options };
         super(p5Instance, captureFramebuffer, grid, fontManager, mergedOptions);
