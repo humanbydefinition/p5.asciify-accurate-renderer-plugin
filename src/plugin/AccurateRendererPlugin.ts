@@ -2,6 +2,13 @@ import p5 from 'p5';
 import { P5AsciifyGrid, P5AsciifyFontManager, renderers, plugins } from 'p5.asciify';
 import { P5AsciifyAccurateRenderer, ACCURATE_DEFAULT_OPTIONS } from './renderer/AccurateAsciiRenderer';
 
+// Declare Window interface augmentation right here
+declare global {
+  interface Window {
+    AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin;
+  }
+}
+
 /**
  * `p5.asciify` plugin that provides an accurate ASCII renderer.
  * This renderer attempts to pick the most fitting ASCII representation
@@ -12,6 +19,7 @@ export const AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin = {
     name: 'Accurate ASCII Renderer',
     description: 'An ASCII renderer that attempts picking the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.',
     version: '1.0.0',
+    author: 'humanbydefinition',
     
     /**
      * Creates a new instance of the accurate ASCII renderer.
@@ -38,13 +46,6 @@ export const AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin = {
         );
     }
 };
-
-// Extend the Window interface to include the custom property
-declare global {
-  interface Window {
-    AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin;
-  }
-}
 
 if (typeof window !== 'undefined') {
   window.AccurateRendererPlugin = AccurateRendererPlugin;
