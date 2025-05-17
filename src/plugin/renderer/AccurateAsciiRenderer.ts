@@ -1,6 +1,6 @@
 import p5 from 'p5';
 
-import { P5AsciifyAbstractFeatureRenderer2D, renderers } from 'p5.asciify';
+import { renderers } from 'p5.asciify';
 import { P5AsciifyGrid } from 'p5.asciify';
 
 import { generateCharacterSelectionShader, generateBrightnessSampleShader, generateColorSampleShader } from './shaders/shaderGenerators.min';
@@ -36,10 +36,10 @@ export const ACCURATE_DEFAULT_OPTIONS = {
     flipVertically: false,
 }
 
-const getBaseClass = (): typeof P5AsciifyAbstractFeatureRenderer2D => {
+const getBaseClass = (): typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D => {
     // For ESM mode - direct import works
-    if (typeof P5AsciifyAbstractFeatureRenderer2D !== 'undefined') {
-        return P5AsciifyAbstractFeatureRenderer2D;
+    if (typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D !== 'undefined') {
+        return renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D;
     }
     
     // For UMD mode - use the global export
@@ -100,8 +100,6 @@ export class P5AsciifyAccurateRenderer extends getBaseClass() {
             depthFormat: this._p.UNSIGNED_INT,
             textureFiltering: this._p.NEAREST
         });
-
-        console.log()
     }
 
     resizeFramebuffers(): void {
