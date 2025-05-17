@@ -42,13 +42,13 @@ Download the latest `umd` version of this plugin from the [**GitHub releases pag
 Download the latest `esm` version of this plugin from the [**GitHub releases page**](#), import it directly from a CDN like [**jsDelivr**](#), or install it using `npm`:
 
 ```bash
-npm install p5.asciify.accurate.renderer
+npm install p5.asciify-accurate-renderer-plugin
 ```
 
 ```javascript
 import p5 from 'p5';
 import { p5asciify } from 'p5.asciify';
-import { AccurateRendererPlugin } from 'p5.asciify.accurate.renderer';
+import { AccurateRendererPlugin } from 'p5.asciify-accurate-renderer-plugin';
 
 const sketch = (p) => {
 
