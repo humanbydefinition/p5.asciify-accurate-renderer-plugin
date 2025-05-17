@@ -1,6 +1,6 @@
 # p5.asciify `"accurate"` renderer plugin
 
-A renderer plugin for the `p5.asciify` library that provides an additional renderer option `"accurate"` to add to any rendering pipeline. This renderer attempts to attempts to pick the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.
+A renderer plugin for the `p5.asciify` library that provides an additional renderer option `"accurate"` to add to any rendering pipeline. This renderer attempts to pick the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.
 
 > [!NOTE]
 > This repository is still in development and not yet ready for production use, as the plugin system is not yet officially released with `p5.asciify`. The plugin is currently in a pre-release state and is not yet available on npm or any other package manager.
