@@ -113,7 +113,7 @@ function draw() {
   rotateX(radians(frameCount * 3));
   rotateZ(radians(frameCount));
   directionalLight(255, 255, 255, 0, 0, -1);
-  box(400, 100, 100);
+  box(800, 100, 100);
 }
 
 function windowResized() {
