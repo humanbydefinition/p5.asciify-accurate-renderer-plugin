@@ -27,7 +27,7 @@ A renderer plugin for the `p5.asciify` library that provides an additional rende
 
 #### Global mode
 
-Download the latest `umd` version of this plugin from the [**GitHub releases page**](#) or import it directly from a CDN like [**jsDelivr**](#). The plugin is distributed as a single JavaScript file, which you can include in your project by adding the following script tag to your HTML file <u>after</u> importing `p5.asciify`:
+Download the latest `umd` version of this plugin from the [**GitHub releases page**](https://github.com/humanbydefinition/p5.asciify-accurate-renderer-plugin/releases/tag/v1.0.0) or import it directly from a CDN like [**jsDelivr**](https://www.jsdelivr.com/package/npm/p5.asciify-accurate-renderer-plugin). The plugin is distributed as a single JavaScript file, which you can include in your project by adding the following script tag to your HTML file <u>after</u> importing `p5.asciify`:
 
 ```html
 <!-- Import p5.js before p5.asciify -->
@@ -42,7 +42,7 @@ Download the latest `umd` version of this plugin from the [**GitHub releases pag
 
 #### Instance mode
 
-Download the latest `esm` version of this plugin from the [**GitHub releases page**](#), import it directly from a CDN like [**jsDelivr**](#), or install it using `npm`:
+Download the latest `esm` version of this plugin from the [**GitHub releases page**](https://github.com/humanbydefinition/p5.asciify-accurate-renderer-plugin/releases/tag/v1.0.0), import it directly from a CDN like [**jsDelivr**](https://www.jsdelivr.com/package/npm/p5.asciify-accurate-renderer-plugin), or install it using `npm`:
 
 ```bash
 npm install p5.asciify-accurate-renderer-plugin
