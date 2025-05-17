@@ -1,5 +1,5 @@
 import p5 from 'p5';
-import { P5AsciifyAbstractFeatureRenderer2D, renderers } from 'p5.asciify';
+import { renderers } from 'p5.asciify';
 import { P5AsciifyGrid } from 'p5.asciify';
 import { P5AsciifyFontManager } from 'p5.asciify';
 /**
@@ -29,7 +29,7 @@ export declare const ACCURATE_DEFAULT_OPTIONS: {
     /** Flip the ASCII characters vertically */
     flipVertically: boolean;
 };
-declare const P5AsciifyAccurateRenderer_base: typeof P5AsciifyAbstractFeatureRenderer2D;
+declare const P5AsciifyAccurateRenderer_base: typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D;
 /**
  * An ASCII renderer that attempts picking the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.
  */
