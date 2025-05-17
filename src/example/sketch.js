@@ -29,7 +29,7 @@ const sketch = new p5((p) => {
 
     p.setup = () => {
         p.setAttributes('antialias', false);
-        p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
+        p.createCanvas(img.width * 2, img.height, p.WEBGL);
 
         p5asciify.registerPlugin(AccurateRendererPlugin);
     };
@@ -46,14 +46,20 @@ const sketch = new p5((p) => {
             characterColorMode: "sampled",
             backgroundColorMode: "sampled",
         });
+
+        asciifier.fontSize(16);
     };
 
     p.draw = () => {
-        p.clear();
-        p.image(img, -p.windowWidth / 2, -p.windowHeight / 2);
+        p.background(0);
+        p.image(img, -p.width / 2, -p.height / 2);
     };
 
     p.drawAsciify = () => {
+        p.background(0);
+        p.image(img, -p.width / 2, -p.height / 2);
+        p.image(asciifier.texture, -p.width / 2 + img.width, -p.height / 2);
+
         const fpsText = "FPS:" + Math.min(Math.ceil(p.frameRate()), 60);
 
         p.noStroke();
@@ -64,11 +70,6 @@ const sketch = new p5((p) => {
         p.textSize(64);
         p.fill(255, 255, 0);
         p.text(fpsText, -p.width / 2, p.height / 2);
-    };
-
-
-    p.windowResized = () => {
-        p.resizeCanvas(p.windowWidth, p.windowHeight);
     };
 });
 
