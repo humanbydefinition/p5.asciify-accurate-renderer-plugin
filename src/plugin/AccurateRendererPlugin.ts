@@ -2,7 +2,7 @@ import p5 from 'p5';
 import { P5AsciifyGrid, P5AsciifyFontManager, renderers, plugins } from 'p5.asciify';
 import { P5AsciifyAccurateRenderer, ACCURATE_DEFAULT_OPTIONS } from './renderer/AccurateAsciiRenderer';
 
-// Declare Window interface augmentation right here
+// Declare Window interface augmentation
 declare global {
   interface Window {
     AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin;
@@ -47,6 +47,7 @@ export const AccurateRendererPlugin: plugins.P5AsciifyRendererPlugin = {
     }
 };
 
+// Ensure plugin is available globally for UMD builds
 if (typeof window !== 'undefined') {
   window.AccurateRendererPlugin = AccurateRendererPlugin;
 }

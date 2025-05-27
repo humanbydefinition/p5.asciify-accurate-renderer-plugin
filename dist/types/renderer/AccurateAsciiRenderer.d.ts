@@ -43,6 +43,7 @@ export declare class P5AsciifyAccurateRenderer extends P5AsciifyAccurateRenderer
     /**
      * Creates a new `"accurate"` ASCII renderer instance.
      * @param p5Instance The p5 instance.
+     * @param captureFramebuffer The framebuffer to apply the ASCII effect to.
      * @param grid Grid object containing the relevant grid information.
      * @param fontManager The font texture atlas containing the ASCII characters texture.
      * @param options The options for the ASCII renderer.

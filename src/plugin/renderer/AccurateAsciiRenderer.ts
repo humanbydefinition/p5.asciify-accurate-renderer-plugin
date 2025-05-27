@@ -36,26 +36,59 @@ export const ACCURATE_DEFAULT_OPTIONS = {
     flipVertically: false,
 }
 
+/**
+ * Safely retrieves the base class with multiple fallback strategies.
+ * This function handles both ESM and UMD/GLOBAL modes.
+ */
 const getBaseClass = (): typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D => {
-    // For ESM mode - direct import works
-    if (typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D !== 'undefined') {
+    // Strategy 1: ESM mode - direct import (most reliable)
+    if (typeof renderers !== 'undefined' && 
+        renderers.renderer2d && 
+        renderers.renderer2d.feature && 
+        typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D !== 'undefined') {
         return renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D;
     }
     
-    // For UMD mode - use the global export
-    if (typeof window !== 'undefined' && window.P5AsciifyAbstractFeatureRenderer2D) {
+    // Strategy 2: UMD/GLOBAL mode - direct window export
+    if (typeof window !== 'undefined' && 
+        window.P5AsciifyAbstractFeatureRenderer2D && 
+        typeof window.P5AsciifyAbstractFeatureRenderer2D === 'function') {
         return window.P5AsciifyAbstractFeatureRenderer2D;
     }
     
-    console.error('P5AsciifyAbstractFeatureRenderer2D not found. Ensure p5.asciify is properly loaded.');
+    // If all strategies fail, provide helpful error information
+    const availableGlobals = typeof window !== 'undefined' ? Object.keys(window).filter(key => 
+        key.toLowerCase().includes('asciify') || key.toLowerCase().includes('p5')
+    ) : [];
+    
+    throw new Error(
+        '`P5AsciifyAbstractFeatureRenderer2D` not found. ' +
+        'Please ensure p5.asciify is loaded before this plugin. ' +
+        (availableGlobals.length > 0 ? 
+            `Found related globals: ${availableGlobals.join(', ')}` : 
+            'No related globals found.')
+    );
+};
 
-    throw new Error('`P5AsciifyAbstractFeatureRenderer2D` not found. Please ensure p5.asciify is loaded before this plugin.');
+/**
+ * Cached base class to avoid repeated lookups.
+ */
+let cachedBaseClass: typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D | null = null;
+
+/**
+ * Gets the base class with caching for performance.
+ */
+const getCachedBaseClass = (): typeof renderers.renderer2d.feature.P5AsciifyAbstractFeatureRenderer2D => {
+    if (cachedBaseClass === null) {
+        cachedBaseClass = getBaseClass();
+    }
+    return cachedBaseClass;
 };
 
 /**
  * An ASCII renderer that attempts picking the most fitting ASCII representation to accurately represent the input sketch using the available ASCII characters.
  */
-export class P5AsciifyAccurateRenderer extends getBaseClass() {
+export class P5AsciifyAccurateRenderer extends getCachedBaseClass() {
     private _characterSelectionShader: p5.Shader;
     private _brightnessSampleShader: p5.Shader;
     private _colorSampleShader: p5.Shader;
@@ -66,6 +99,7 @@ export class P5AsciifyAccurateRenderer extends getBaseClass() {
     /**
      * Creates a new `"accurate"` ASCII renderer instance.
      * @param p5Instance The p5 instance.
+     * @param captureFramebuffer The framebuffer to apply the ASCII effect to.
      * @param grid Grid object containing the relevant grid information.
      * @param fontManager The font texture atlas containing the ASCII characters texture.
      * @param options The options for the ASCII renderer.
