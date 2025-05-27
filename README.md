@@ -37,7 +37,7 @@ Download the latest `umd` version of this plugin from the [**GitHub releases pag
 <script src="path/to/library/p5.asciify.umd.js"></script>
 
 <!-- Import the plugin after p5.asciify -->
-<script src="path/to/library/p5.asciify.accurate.umd.js"></script>
+<script src="path/to/library/p5.asciify-accurate-renderer-plugin.umd.js"></script>
 ```
 
 #### Instance mode
