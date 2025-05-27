@@ -1,6 +1,6 @@
 {
   "name": "p5.asciify-accurate-renderer-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A p5.asciify renderer plugin that converts textures into accurate ASCII representations.",
   "type": "module",
   "types": "./dist/types/AccurateRendererPlugin.d.ts",
